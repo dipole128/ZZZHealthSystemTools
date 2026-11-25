@@ -77,96 +77,96 @@ Detailed guide with screenshots: docs/instruction.html — open it in a browser.
 Quick overview: three steps
 Tab 1 — Preparation
 
-    Set the path to the ZZMI folder (where d3dx_user.ini is located) and click Save.
+- Set the path to the ZZMI folder (where d3dx_user.ini is located) and click Save.
 
-    Import the mod from an archive or a folder.
+- Import the mod from an archive or a folder.
 
-    Click Scan Folder, pick the desired .ini file, and select the variables.
+- Click Scan Folder, pick the desired .ini file, and select the variables.
 
-    Click Save Selected Variables.
+- Click Save Selected Variables.
 
 Tab 2 — Outfit Generator
 
-    In-game, select the desired outfit and press F10.
+- In-game, select the desired outfit and press F10.
 
-    Click Save Step in the program.
+- Click Save Step in the program.
 
-    Switch the outfit state → F10 → Save Step.
+- Switch the outfit state → F10 → Save Step.
 
-    Repeat for all destruction stages.
+- Repeat for all destruction stages.
 
-    Click Finish (the outfit won't be saved without it!).
+- Click Finish (the outfit won't be saved without it!).
 
 Tab 3 — Processing Tools
 
-    Health System — select the INI, detect the character, click Apply.
+- Health System — select the INI, detect the character, click Apply.
 
-    Merging — if you have multiple outfits, check them and click Merge.
+- Merging — if you have multiple outfits, check them and click Merge.
 
-    Randomizer — set up random outfit and variable switching.
+- Randomizer — set up random outfit and variable switching.
 
-    💡 Details on unused variable cleanup, working with multiple outfits, and randomizer rules — see the full guide.
+💡 Details on unused variable cleanup, working with multiple outfits, and randomizer rules — see the full guide.
 
 🛠 Building from Source
 Windows
-bash
+```bash
 
 python -m PyInstaller --noconsole --onedir --icon=myicon.ico ^
     --add-data="myicon.ico;." ^
     --collect-all bcj --collect-all py7zr ^
     main.py
-
+```
 The build will appear in dist/main/.
 
 Don't forget to place these files next to main.exe in dist/main/:
 
-    lang_ru.json
+- lang_ru.json
 
-    lang_en.json
+- lang_en.json
 
-    character_hashes.json
+- character_hashes.json
 
-    ⚠️ If --onefile causes issues with bcj._bcj (a C extension for 7z), use --onedir. It is more stable with C extensions and easier to debug.
+⚠️ If --onefile causes issues with bcj._bcj (a C extension for 7z), use --onedir. It is more stable with C extensions and easier to debug.
 
 🌐 Localization
 
 The program automatically detects all lang_*.json files next to main.py / main.exe.
 Adding your own language
 
-    Copy lang_en.json to lang_xx.json (e.g., lang_ja.json).
+- Copy lang_en.json to lang_xx.json (e.g., lang_ja.json).
 
-    Change "language_name" (e.g., to "日本語").
+- Change "language_name" (e.g., to "日本語").
 
-    Translate all values while keeping keys and placeholders {} and \n intact.
+- Translate all values while keeping keys and placeholders {} and \n intact.
 
-    Restart the program — the language will appear in the Language menu.
+- Restart the program — the language will appear in the Language menu.
 
 Languages included in the repository
 
-    🇷🇺 Russian (lang_ru.json)
+- 🇷🇺 Russian (lang_ru.json)
 
-    🇬🇧 English (lang_en.json)
+- 🇬🇧 English (lang_en.json)
 
-    Want to add a translation? Open a PR with a new lang_xx.json.
+- Want to add a translation? Open a PR with a new lang_xx.json.
 
 🐛 Known Issues
 
-    Building with --onefile may cause issues with bcj._bcj. Solution: use --onedir.
+- Building with --onefile may cause issues with bcj._bcj. Solution: use --onedir.
 
-    Extracting .rar requires 7-Zip to be installed.
+- Extracting .rar requires 7-Zip to be installed.
 
 If you find a bug — open an Issue with a description and a screenshot of the program log (shown on Tab 3).
 🤝 Contributing
 
 Pull requests are welcome. Please:
 
-    Fork the repository.
+- Fork the repository.
 
-    Create a branch: git checkout -b feature/my-feature.
+- Create a branch: git checkout -b feature/my-feature.
 
-    Make your changes and test them.
+- Make your changes and test them.
 
-    Submit a PR with a description.
+- Submit a PR with a description.
 
 📄 License
 
@@ -174,11 +174,11 @@ This project is distributed under the MIT License. See LICENSE.
 
 The license covers only the source code of this project and does not apply to:
 
-    game assets, models, textures;
+- game assets, models, textures;
 
-    third-party mods;
+- third-party mods;
 
-    any content owned by HoYoverse.
+- any content owned by HoYoverse.
 
 🙏 Credits & Disclaimer
 
@@ -192,8 +192,8 @@ Rights to mentioned mods belong to their respective authors.
 Variable names and code examples are provided solely to demonstrate how the tool works.
 💬 Feedback
 
-    🐛 Report a bug
+- 🐛 Report a bug
 
-    💡 Suggest an idea
+- 💡 Suggest an idea
 
 <p align="center"> <i>Made with ❤️ for the 3dmigoto community</i> </p>	
