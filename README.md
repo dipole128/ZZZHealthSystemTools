@@ -40,16 +40,16 @@ You can create **multiple outfits** with their own destruction stages, **merge**
 
 ### Tab 2 — Outfit Generator
 
-![Save step 1](images/5.png)
-![Save step 2](images/6.png)
-![Finish](images/7.png)
-![Multiple outfits](images/8.png)
-![Multiple outfits](images/9.png)
+![Save step 1](image/5.png)
+![Save step 2](image/6.png)
+![Finish](image/7.png)
+![Multiple outfits](image/8.png)
+![Multiple outfits](image/9.png)
 ### Tab 3 — Processing Tools
 
-![Health System](images/10.png)
-![Merging](images/11.png)
-![Randomizer](images/12.png)
+![Health System](image/10.png)
+![Merging](image/11.png)
+![Randomizer](image/12.png)
 
 
 > 📌 Screenshots show only the program interface, with no in-game content.
@@ -97,7 +97,7 @@ git clone https://github.com/dipole128/ZZZHealthSystemTools.git
 cd ZZZHealthSystemTools
 pip install -r requirements.txt
 python main.py
-
+```
 📖 Usage
 
 Detailed guide with screenshots: docs/instruction.html — open it in a browser.
