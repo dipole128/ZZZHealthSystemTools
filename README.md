@@ -29,33 +29,6 @@ You can create **multiple outfits** with their own destruction stages, **merge**
 
 ---
 
-## 🖼 Screenshots
-
-### Tab 1 — Preparation
-
-![Path to ZZMI](image/1.png)
-![Mod import](image/2.png)
-![Scan and select INI](image/3.png)
-![Variables list](images/4.png)
-
-### Tab 2 — Outfit Generator
-
-![Save step 1](image/5.png)
-![Save step 2](image/6.png)
-![Finish](image/7.png)
-![Multiple outfits](image/8.png)
-![Multiple outfits](image/9.png)
-### Tab 3 — Processing Tools
-
-![Health System](image/10.png)
-![Merging](image/11.png)
-![Randomizer](image/12.png)
-
-
-> 📌 Screenshots show only the program interface, with no in-game content.
-
----
-
 ## 📋 Requirements
 
 **For users:** 
