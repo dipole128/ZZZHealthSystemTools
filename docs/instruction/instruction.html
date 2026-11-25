@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthSystem — Инструкция</title>
+<style>
+    :root {
+        --bg: #f4f6f8;
+        --card-bg: #ffffff;
+        --text: #2c3e50;
+        --text-light: #5a6c7d;
+        --accent: #3498db;
+        --accent-hover: #2980b9;
+        --btn-bg: #eaf4fc;
+        --btn-border: #3498db;
+        --warn-bg: #fff8e1;
+        --warn-border: #f39c12;
+        --ok-bg: #e8f8ef;
+        --ok-border: #27ae60;
+        --code-bg: #ecf0f1;
+        --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 30px 20px 60px;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    header h1 {
+        font-size: 2em;
+        margin: 0 0 10px;
+        color: var(--text);
+    }
+
+    header p.subtitle {
+        color: var(--text-light);
+        font-size: 1.05em;
+        margin: 0;
+    }
+
+    .lang-switch {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin: 20px 0 30px;
+    }
+
+    .lang-switch button {
+        padding: 8px 22px;
+        border: 2px solid var(--accent);
+        background: var(--card-bg);
+        color: var(--accent);
+        border-radius: 24px;
+        cursor: pointer;
+        font-size: 0.95em;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+    .lang-switch button.active,
+    .lang-switch button:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 24px 28px;
+        margin-bottom: 24px;
+        box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+        font-size: 1.45em;
+        margin-top: 0;
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--bg);
+        color: var(--text);
+    }
+
+    .card h3 {
+        font-size: 1.15em;
+        margin: 22px 0 10px;
+        color: var(--accent);
+    }
+
+    .card p { margin: 10px 0; }
+
+    ol, ul {
+        padding-left: 22px;
+        margin: 10px 0;
+    }
+
+    li { margin: 6px 0; }
+
+    /* Кнопки программы */
+    .btn-name {
+        display: inline-block;
+        padding: 1px 8px;
+        background: var(--btn-bg);
+        border: 1px solid var(--btn-border);
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.93em;
+        color: var(--accent-hover);
+        white-space: nowrap;
+    }
+
+    /* Inline code */
+    code {
+        background: var(--code-bg);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 0.92em;
+        color: #c0392b;
+    }
+
+    /* Блоки-предупреждения */
+    .note, .tip {
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin: 14px 0;
+        font-size: 0.96em;
+    }
+
+    .note {
+        background: var(--warn-bg);
+        border-left: 4px solid var(--warn-border);
+    }
+
+    .note strong { color: #b9770e; }
+
+    .tip {
+        background: var(--ok-bg);
+        border-left: 4px solid var(--ok-border);
+    }
+
+    .tip strong { color: #1e8449; }
+
+    /* Иконки в заголовках */
+    .card h2 .icon { margin-right: 8px; }
+
+    footer {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 0.88em;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #dde3e8;
+    }
+
+    /* Скрытие блоков языка */
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+
+    /* Адаптивность */
+    @media (max-width: 600px) {
+        .container { padding: 20px 14px 40px; }
+        .card { padding: 18px 16px; }
+        header h1 { font-size: 1.5em; }
+        .card h2 { font-size: 1.2em; }
+    }
+	/* Картинки внутри карточек */
+	.card img.screenshot {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		margin: 16px auto;
+		border-radius: 10px;
+		border: 1px solid #dde3e8;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+		cursor: zoom-in;
+		transition: transform 0.2s;
+	}
+	.card img.screenshot:hover {
+		transform: scale(1.01);
+	}
+
+	/* Подпись под картинкой */
+	.card .img-caption {
+		text-align: center;
+		font-size: 0.88em;
+		color: var(--text-light);
+		margin-top: -6px;
+		margin-bottom: 16px;
+		font-style: italic;
+	}	   
+</style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>HealthSystem</h1>
+        <p class="subtitle" data-lang="ru">Инструкция по работе с программой</p>
+        <p class="subtitle" data-lang="en">User Guide</p>
+    </header>
+
+    <div class="lang-switch">
+        <button onclick="setLang('ru')" id="btn-ru" class="active">Русский</button>
+        <button onclick="setLang('en')" id="btn-en">English</button>
+    </div>
+
+    <!-- ==================== RUSSIAN ==================== -->
+    <div data-lang="ru" class="visible">
+
+        <div class="card">
+            <h2><span class="icon">🎯</span>Назначение</h2>
+            <p>Программа позволяет добавить систему разрушения костюмов в зависимости от здоровья персонажа.</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">💡</span>Как это работает</h2>
+            <p>Вы скачиваете мод, в котором можно переключать элементы костюма (например, моды от Lewd Lad). Далее, шаг за шагом с помощью программы вы настраиваете разные состояния костюма, которые отвечают за разный уровень здоровья. Можно настроить несколько вариантов костюма со своими вариантами разрушения. В игре, в зависимости от уровня здоровья персонажа, костюм будет меняться автоматически.</p>
+            <div class="tip">
+                <strong>Общий принцип:</strong> когда вы настраиваете костюмы, программа создаёт «пресеты» — снимки состояния ваших переменных для каждого этапа разрушения. При применении системы здоровья программа <b>жёстко прописывает</b> эти значения в настройках мода. Выбранные переменные теперь будут переключаться <b>только</b> системой здоровья в зависимости от уровня HP персонажа.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">📥</span>Подготовка и установка</h2>
+            <ol>
+                <li>Скачайте архив и распакуйте его в удобное место.</li>
+                <li>В архиве содержатся файлы локализации — английская и русская. Локализация хранится в JSON-файлах, поэтому вы легко можете добавить свой язык: попросите нейросеть перевести <code>lang_en.json</code>, сохраните перевод в файл, например <code>lang_jp.json</code>, и программа автоматически подхватит его в меню <b>Language</b>.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🛠</span>Вкладка 1 — Подготовка</h2>
+            <ol>
+                <li>Укажите путь к папке <b>ZZMI</b> и нажмите <span class="btn-name">Сохранить</span>.
+                    <div class="note"><strong>Важно!</strong> Нужно указать именно путь к папке ZZMI, где хранится файл <code>d3dx_user.ini</code>.</div>
+					<img src="images/1.png" alt="Вкладка 1 — Путь к ZZMI" class="screenshot">
+                </li>
+                <li><b>Импортируйте мод</b> — укажите путь к папке или выберите архив (программа распакует его автоматически).
+                    <div class="note"><strong>Важно!</strong> Для распаковки <code>.rar</code> нужен установленный 7-Zip. Если его нет — распаковывайте <code>.rar</code> вручную.</div>
+					<img src="images/2.png" alt="Вкладка 1 — Импорт мода" class="screenshot">
+                    Если мод уже в папке <code>Mods</code> — просто нажмите <span class="btn-name">Сканировать папку</span>.
+                </li>
+                <li>Нажмите <span class="btn-name">Сканировать папку</span>, найдите папку с модом и выберите нужный <code>.ini</code>-файл. При выборе ниже отобразится список переменных.</li>
+				<img src="images/3.png" alt="Вкладка 1 — Выбор INI файла" class="screenshot">
+                <li>Если знаете, что какие-то переменные вам не понадобятся (например, отвечающие за UI мода или за цвет костюма) — <b>уберите с них галочку</b>.</li>
+				<img src="images/4.png" alt="Вкладка 1 — Выбор переменных" class="screenshot">
+                <li>Нажмите <span class="btn-name">Сохранить выбранные переменные</span> — теперь сформирован список переменных, которые программа будет читать из <code>d3dx_user.ini</code>.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">👗</span>Вкладка 2 — Генератор костюмов</h2>
+            <p>Порядок действий:</p>
+            <ol>
+                <li>В игре выберите нужный костюм.</li>
+                <li>Нажмите <b>F10</b>, чтобы текущее состояние переменных записалось в <code>d3dx_user.ini</code>.</li>
+                <li>В программе нажмите <span class="btn-name">Сохранить шаг</span>.</li>
+				<img src="images/5.png" alt="Вкладка 2 — Первый шаг" class="screenshot">
+                <li>Переключите состояние костюма в игре, снова нажмите <b>F10</b>.</li>
+                <li>Нажмите <span class="btn-name">Сохранить шаг</span>.</li>
+            </ol>
+            <p>Повторяйте, пока не запишете все этапы разрушения. Затем нажмите <span class="btn-name">Готово</span>.</p>
+			<img src="images/7.png" alt="Вкладка 2 — Нажатие Готово" class="screenshot">
+            <div class="note"><strong>Важно!</strong> Если не нажать <b>Готово</b>, костюм не сохранится.</div>
+
+            <h3>🧹 Очистка неиспользуемых переменных</h3>
+            <p>После нажатия <span class="btn-name">Готово</span> программа проанализирует шаги и может предложить очистить неиспользуемые переменные (те, что не менялись от шага к шагу, например <code>$color</code>).</p>
+            <ul>
+                <li><b>Зачем?</b> Если оставить такую переменную — система здоровья «залочит» её на одном значении. Очистка убирает её из жёстких настроек, позволяя менять другими способами (Рандомайзером, горячими клавишами мода).</li>
+                <li><b>Что нажимать?</b>
+                    <ul>
+                        <li>Если создаёте <b>один костюм</b> — жмите <b>Да</b>, код станет чище.</li>
+                        <li>Если создаёте <b>несколько костюмов</b> для объединения — жмите <b>Нет</b>. Это сохранит единую структуру переменных, обеспечив стабильное объединение.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>Для нового костюма нажмите <span class="btn-name">Создать ещё костюм</span> и повторите настройку. Не забудьте снова нажать <span class="btn-name">Готово</span>!</p>
+			<img src="images/8.png" alt="Вкладка 2 — Создание нового костюма" class="screenshot">
+			<img src="images/9.png" alt="Вкладка 2 — Новый костюм (шаг 2)" class="screenshot">
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">⚙️</span>Вкладка 3 — Инструменты обработки</h2>
+
+            <h3>Система здоровья</h3>
+            <ol>
+                <li>Выберите <code>.ini</code>-файл (если нужного нет — нажмите <span class="btn-name">Обновить</span>).</li>
+                <li>Нажмите <span class="btn-name">Найти по хэшу</span> — программа определит имя персонажа. Если не найдено — введите вручную.</li>
+            </ol>
+            <div class="note"><strong>Важно!</strong> Имя должно совпадать с именем в <code>characters.ini</code> по пути <code>\ZZMI\Core\ZZMI\Libraries\HP bar</code>. Обычно программа подставляет имя сама.</div>
+            <p>Нажмите <span class="btn-name">Применить систему здоровья</span>.</p>
+			<img src="images/10.png" alt="Вкладка 3 — Система здоровья" class="screenshot">
+            <p>Если создан один костюм — готово. Если несколько — переходите к объединению.</p>
+
+            <h3>Объединение костюмов</h3>
+            <ol>
+                <li>Нажмите <span class="btn-name">Обновить список файлов</span>. Нужные файлы будут с цифрами в конце названия.</li>
+                <li>Отметьте галочками нужные файлы.</li>
+                <li>При желании переименуйте итоговый файл и выберите клавиши переключения (по умолчанию <code>z</code> и <code>x</code>).</li>
+                <li>Нажмите <span class="btn-name">Объединить выбранные INI</span>.</li>
+				<img src="images/11.png" alt="Вкладка 3 — Объединение костюмов" class="screenshot">
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🎲</span>Рандомайзер</h2>
+            <p>Если костюмов несколько и вы хотите, чтобы они менялись самостоятельно — перейдите на вкладку <b>Рандомайзер</b>.</p>
+            <ol>
+                <li>Выберите переменную <code>$swapsetmergecostume</code> (подсвечена синим сверху) — это переключатель костюмов.</li>
+                <li>Настройте <b>Базовый интервал</b> — основное значение рандомайзера, применяется ко всем выбранным переменным.</li>
+                <li>В <b>Параметрах</b> введите значения: для 2 костюмов — <code>0 1</code>, для 3 — <code>0 1 2</code> и т.д.</li>
+                <li>Нажмите <span class="btn-name">Добавить выбранные</span>.</li>
+                <li>Нажмите <span class="btn-name">Применить рандомайзер</span>.</li>
+				<img src="images/12.png" alt="Рандомайзер" class="screenshot">
+            </ol>
+            <p><b>Галочка «Свой интервал»</b> нужна, когда несколько переменных переключаются с разной частотой. Например, <code>$color</code>: найдите в списке, поставьте галочку, введите значения (<code>0 1 2</code>), отметьте «Свой интервал» и укажите время (например, 30 сек).</p>
+
+
+            <div class="note">
+                <strong>⚠️ Важное правило:</strong> чтобы рандомайзер менял переменные, их нужно <b>убрать</b> из списка обработки Системой здоровья на Вкладке 1.
+                <p style="margin-top:8px;"><i>Пример:</i> если хотите, чтобы <code>$color</code> менялся рандомно, уберите с него галочку на Вкладке 1 перед сохранением и переходом на Вкладку 2. После создания костюмов вернитесь на Вкладку 1, выберите только <code>$color</code>, сохраните и переходите на Рандомайзер.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">✅</span>Всё готово!</h2>
+            <p>Можете приступать к следующему моду: либо снова на Вкладке 1 выберите архив/папку, либо найдите мод в папке <code>Mods</code>.</p>
+			<p>Использован мод Phoenix OG & Bunny Lewd Variety Pack by Lewd Lad</p>
+        </div>
+
+    </div>
+
+    <!-- ==================== ENGLISH ==================== -->
+    <div data-lang="en">
+
+        <div class="card">
+            <h2><span class="icon">🎯</span>Purpose</h2>
+            <p>The program allows you to add a costume destruction system based on the character's health level.</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">💡</span>How It Works</h2>
+            <p>You download a mod that allows you to switch costume elements (e.g., mods by Lewd Lad). Then, step by step using the program, you configure different costume states corresponding to different health levels. You can set up several outfit variations with their own destruction stages. In-game, depending on the character's health level, the outfit will change automatically.</p>
+            <div class="tip">
+                <strong>General Principle:</strong> when you set up outfits, the program creates "presets" — snapshots of your variables' states for each destruction stage. When applying the health system, the program <b>hardcodes</b> these values into the mod's settings. The variables you selected will now be controlled <b>only</b> by the health system, depending on the character's HP level.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">📥</span>Preparation and Installation</h2>
+            <ol>
+                <li>Download the archive and extract it to a convenient location.</li>
+                <li>The archive contains localization files — English and Russian. Localization is stored in JSON files, so you can easily add your own language: ask a neural network to translate <code>lang_en.json</code>, save the translation as e.g. <code>lang_jp.json</code>, and the program will pick it up automatically in the <b>Language</b> menu.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🛠</span>Tab 1 — Preparation</h2>
+            <ol>
+                <li>Specify the path to the <b>ZZMI</b> folder and click <span class="btn-name">Save</span>.
+                    <div class="note"><strong>Important!</strong> Must be the ZZMI folder where the <code>d3dx_user.ini</code> file is stored.</div>
+                    <img src="images/1.png" alt="Tab 1 — ZZMI path" class="screenshot">
+                </li>
+                <li><b>Import the mod</b> — specify a folder path or select an archive (extracted automatically).
+                    <div class="note"><strong>Important!</strong> Extracting <code>.rar</code> requires 7-Zip. Without it, extract <code>.rar</code> manually.</div>
+                    <img src="images/2.png" alt="Tab 1 — Import mod" class="screenshot">
+                    If the mod is already in <code>Mods</code> — just click <span class="btn-name">Scan Folder</span>.
+                </li>
+                <li>Click <span class="btn-name">Scan Folder</span>, find your mod's folder, select the desired <code>.ini</code> file. A list of variables will appear below.</li>
+                    <img src="images/3.png" alt="Tab 1 — Select INI file" class="screenshot">
+                <li>If you know some variables won't be needed (e.g., mod UI or outfit color) — <b>uncheck them</b>.</li>
+                    <img src="images/4.png" alt="Tab 1 — Select variables" class="screenshot">
+                <li>Click <span class="btn-name">Save Selected Variables</span> — now the program has the list of variables it will read from <code>d3dx_user.ini</code>.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">👗</span>Tab 2 — Outfit Generator</h2>
+            <p>Sequence of actions:</p>
+            <ol>
+                <li>Select the desired outfit in the game.</li>
+                <li>Press <b>F10</b> to write current variable states to <code>d3dx_user.ini</code>.</li>
+                <li>Click <span class="btn-name">Save Step</span> in the program.</li>
+                    <img src="images/5.png" alt="Tab 2 — First step" class="screenshot">
+                <li>Switch the outfit state in the game and press <b>F10</b> again.</li>
+                <li>Click <span class="btn-name">Save Step</span>.</li>
+            </ol>
+            <p>Repeat until all destruction stages are recorded. Then click <span class="btn-name">Finish</span>.</p>
+                    <img src="images/7.png" alt="Tab 2 — Pressing Finish" class="screenshot">
+            <div class="note"><strong>Important!</strong> If you don't click <b>Finish</b>, the outfit will not be saved.</div>
+
+            <h3>🧹 Cleaning Up Unused Variables</h3>
+            <p>After clicking <span class="btn-name">Finish</span>, the program analyzes your steps and may offer to clean up unused variables (those not changed between steps, e.g. <code>$color</code>).</p>
+            <ul>
+                <li><b>Why?</b> If left in, the health system will "lock" the variable to one value. Cleanup removes it from hardcoded health settings, letting you change it other ways (Randomizer, mod hotkeys).</li>
+                <li><b>What to click?</b>
+                    <ul>
+                        <li>If creating <b>one outfit</b> — click <b>Yes</b>, code becomes cleaner.</li>
+                        <li>If creating <b>multiple outfits</b> for merging — click <b>No</b>. This preserves a unified variable structure for stable merging.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>To create another outfit — click <span class="btn-name">Create New Outfit</span> and repeat. Don't forget to click <span class="btn-name">Finish</span> again!</p>
+                    <img src="images/8.png" alt="Tab 2 — Creating new outfit" class="screenshot">                   
+                    <img src="images/9.png" alt="Tab 2 — New outfit (step 2)" class="screenshot">
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">⚙️</span>Tab 3 — Processing Tools</h2>
+
+            <h3>Health System</h3>
+            <ol>
+                <li>Select the <code>.ini</code> file (if not listed — click <span class="btn-name">Refresh</span>).</li>
+                <li>Click <span class="btn-name">Detect by Hash</span> — the program will detect the character's name. If not found — enter it manually.</li>
+            </ol>
+            <div class="note"><strong>Important!</strong> The name must match the one in <code>characters.ini</code> at <code>\ZZMI\Core\ZZMI\Libraries\HP bar</code>. Normally the program fills it in automatically.</div>
+            <p>Click <span class="btn-name">Apply Health System</span>.</p>
+                    <img src="images/10.png" alt="Tab 3 — Health System" class="screenshot">
+            <p>If only one outfit — done. If several — proceed to merging.</p>
+
+            <h3>Merging Outfits</h3>
+            <ol>
+                <li>Click <span class="btn-name">Refresh File List</span>. The needed files will have numbers at the end.</li>
+                <li>Check the boxes for the files to merge.</li>
+                <li>Optionally rename the output file and choose switching keys (default <code>z</code> and <code>x</code>).</li>
+                <li>Click <span class="btn-name">Merge Selected INIs</span>.</li>
+                    <img src="images/11.png" alt="Tab 3 — Merging outfits" class="screenshot">
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🎲</span>Randomizer</h2>
+            <p>If you have multiple outfits and want them to change independently — open the <b>Randomizer</b> tab.</p>
+            <ol>
+                <li>Select the <code>$swapsetmergecostume</code> variable (highlighted in blue at the top) — the outfit switcher.</li>
+                <li>Set the <b>Base Interval</b> — the main randomizer value, applied to all selected variables.</li>
+                <li>In <b>Parameters</b> enter values: for 2 outfits — <code>0 1</code>, for 3 — <code>0 1 2</code>, etc.</li>
+                <li>Click <span class="btn-name">Add Selected</span>.</li>
+                <li>Click <span class="btn-name">Apply Randomizer</span>.</li>
+                    <img src="images/12.png" alt="Randomizer" class="screenshot">
+            </ol>
+            <p>The <b>"Custom Interval"</b> checkbox is for when several variables switch at different frequencies. E.g., <code>$color</code>: find it in the list, check it, enter values (<code>0 1 2</code>), check "Custom Interval" and set the time (e.g., 30 sec).</p>
+
+            <div class="note">
+                <strong>⚠️ Important rule:</strong> for the randomizer to change variables, they must be <b>removed</b> from the Health System processing list in Tab 1.
+                <p style="margin-top:8px;"><i>Example:</i> if you want <code>$color</code> to change randomly, uncheck it in Tab 1 before saving and switching to Tab 2. After creating outfits, return to Tab 1, select only <code>$color</code>, save, and go to the Randomizer.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">✅</span>All Done!</h2>
+            <p>You can proceed to the next mod: either select an archive/folder in Tab 1 again, or find the mod in the <code>Mods</code> folder.</p>
+					<p>Mod usage Phoenix OG & Bunny Lewd Variety Pack by Lewd Lad</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            el.classList.toggle('visible', el.getAttribute('data-lang') === lang);
+        });
+        document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.documentElement.lang = lang;
+        localStorage.setItem('lang', lang);
+    }
+
+    // Автоопределение языка при загрузке
+    (function init() {
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const saved = localStorage.getItem('lang');
+        if (saved) {
+            setLang(saved);
+        } else {
+            const browserLang = (navigator.language || 'ru').toLowerCase();
+            setLang(browserLang.startsWith('ru') ? 'ru' : 'en');
+        }
+    })();
+</script>
+
+</body>
+</html>
