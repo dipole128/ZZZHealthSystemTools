@@ -33,9 +33,9 @@ You can create **multiple outfits** with their own destruction stages, **merge**
 
 ### Tab 1 — Preparation
 
-![Path to ZZMI](images/1.png)
-![Mod import](images/2.png)
-![Scan and select INI](images/3.png)
+![Path to ZZMI](image/1.png)
+![Mod import](image/2.png)
+![Scan and select INI](image/3.png)
 ![Variables list](images/4.png)
 
 ### Tab 2 — Outfit Generator
