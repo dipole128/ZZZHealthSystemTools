@@ -56,7 +56,8 @@ You can create **multiple outfits** with their own destruction stages, **merge**
 3. Extract it to any folder.
 4. Run `main.exe`.
 
-> ⚠️ Make sure the following files are next to `main.exe`:
+> [!WARNING]
+> Make sure the following files are next to `main.exe`:
 > - `lang_ru.json`
 > - `lang_en.json`
 > - `character_hashes.json`
